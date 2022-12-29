@@ -1,0 +1,21 @@
+/*
+ * Theme Information:
+ *
+ * Name: wast
+ * Author: wastedziyun
+ * Version: v0.0.1
+ */
+
+h1 {
+            font-family: "Times New Roman", "PingFang SC", sans-serif;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+        }
+        p {
+            font-family: "Times New Roman", "PingFang SC", sans-serif;
+            color: white;
+            font-size: 20px;
+        }
+        body {
+            background-color: #808080;
