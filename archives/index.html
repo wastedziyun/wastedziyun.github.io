@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <html lang="zh-cn">
-<head>
-    <title>Archives</title>
-    <link rel="stylesheet" href="/theme.css">
-</head>
-<body style="text-align: center">
-    <h1>Archives</h1>
-    <p>Posts are listed below.</p>
-    <p><a href="/index.html">Home</a></p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Archives</title>
+        <link rel="stylesheet" href="/theme.css">
+    </head>
+    <header style="text-align: center;font-family: Times New Roman, PingFang SC, sans-serif">
+            <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+            <div id="header"></div>
+            <script>
+                $("#header").load("/head.html");
+            </script>
+    </header>
+    <body style="text-align: center">
+        <h1>Archives</h1>
+        <p>Posts are listed below.</p>
+        <p><a href="/archives/1.html">1</a></p>
+    </body>
+    <footer>
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <div id="footer"></div>
+        <script>
+            $("#footer").load("/foot.html");
+        </script>
+    </footer>
+</html>
