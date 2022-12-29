@@ -1,2 +1,2 @@
 # wastedziyun.github.io
-wastedziyun's blog
+wastedziyun's blog.
