@@ -7,25 +7,30 @@
  */
 
 body {
-            background-color: #808080;
+    padding-top: 50px;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 0px;
+    word-break: hyphenate;
+    background-color: #808080;
 }
 
 h1 {
-            font-family: "Times New Roman", "PingFang SC", sans-serif;
-            font-size: 30px;
-            color: white;
-            text-align: center;
+    font-family: "Times New Roman", "PingFang SC", sans-serif;
+    font-size: 30px;
+    color: white;
+    text-align: center;
 }
 
 h2 {
-            font-family: "Times New Roman", "PingFang SC", sans-serif;
-            font-size: 25px;
-            color: white;
-            text-align: center;
+    font-family: "Times New Roman", "PingFang SC", sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
 }
 
 p {
-            font-family: "Times New Roman", "PingFang SC", sans-serif;
-            color: white;
-            font-size: 20px;
+    font-family: "Times New Roman", "PingFang SC", sans-serif;
+    color: white;
+    font-size: 20px;
 }
