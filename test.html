@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>py-script test</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="/theme.css" />
+    <script defer src="/pyscript.js"></script>
+    </head>
+    <header style="text-align: center;font-family: Times New Roman, PingFang SC, sans-serif">
+            <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+            <div id="header"></div>
+            <script>
+                $("#header").load("/head.html");
+            </script>
+    </header>
+    <body style="text-align: center">
+        <h1>Test...</h1>
+        <p>This is the current date and time, as computed by Python:</p>
+        <py-script style="font-family:Times New Roman,PingFang SC,sans-serif;color: white;font-size: 20px">
+            from datetime import datetime
+            now = datetime.now()
+            now.strftime("%m/%d/%Y, %H:%M:%S")
+        </py-script>
+    </body>
+</html>
