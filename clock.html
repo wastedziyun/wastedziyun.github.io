@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clock</title>
+    <link rel="stylesheet" href="/theme.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+    <header style="text-align: center;font-family: Times New Roman, PingFang SC, sans-serif">
+            <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+            <div id="header"></div>
+            <script>
+                $("#header").load("/head.html");
+            </script>
+    </header>
+    <body style="text-align: center">
+        <h1>Clock;pyscript_test</h1>
+        <p>Thinking with <a href="https://pyscript.net/">PyScript</a>.</p>
+        <p>This is the current date and time, as computed by Python:</p>
+    </body>
+    <body>
+        <div class="font-mono"><label id="outputDiv"></label></div>
+        <div id="outputDiv2" class="font-mono" style="text-align: center;font-family:Times New Roman,PingFang SC,sans-serif;font-size: 20px;color: white"></div>
+        <py-config style="display:none">
+                    [[fetch]]
+                    files = ["./utils.py"]
+            </py-config>
+        <py-script style="display:none">
+              from utils import now
+              import asyncio
+              async def foo():
+                while True:
+                  await asyncio.sleep(1)
+                  output = now()
+                  Element("outputDiv2").write(output)
+              pyscript.run_until_complete(foo())
+            </py-script>
+    </body>
+    <footer>
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <div id="footer"></div>
+        <script>
+            $("#footer").load("/foot.html");
+        </script>
+    </footer>
+</html>
