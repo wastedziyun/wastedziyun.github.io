@@ -29,6 +29,13 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    font-family: "Times New Roman", "PingFang SC", sans-serif;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
 p {
     font-family: "Times New Roman", "PingFang SC", sans-serif;
     color: white;
@@ -38,4 +45,10 @@ p {
 a:visited, a:link {
     color: white;
     font-weight: bold;
+}
+
+li {
+    font-family: "Times New Roman", "PingFang SC", sans-serif;
+    color: white;
+    font-size: 20px;
 }
