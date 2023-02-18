@@ -8,8 +8,8 @@
 
 body {
     padding-top: 50px;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-right: 12%;
+    padding-left: 12%;
     padding-bottom: 0px;
     word-break: hyphenate;
     background-color: #53565c;
@@ -40,6 +40,12 @@ p {
     font-family: "Times New Roman", "PingFang SC", sans-serif;
     color: white;
     font-size: 20px;
+}
+
+p2 {
+    font-family: "Times New Roman", "PingFang SC", sans-serif;
+    color: white;
+    font-size: 17px;
 }
 
 a:visited, a:link {
