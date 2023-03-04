@@ -61,7 +61,7 @@ li {
 
 @font-face {
   font-family: "PingFang SC";
-  src: url("/extensions/fonts/PingFang SC/PingFang SC Regular.woff") format("woff"),
+  src: url("/extensions/fonts/PingFang SC/PingFang SC Regular.ttf") format("ttf"),
        url("/extensions/fonts/PingFang SC/PingFang SC Regular.eot") format("eot"),
-       url("/extensions/fonts/PingFang SC/PingFang SC Regular.ttf") format("ttf");
+       url("/extensions/fonts/PingFang SC/PingFang SC Regular.woff") format("woff");
 }
