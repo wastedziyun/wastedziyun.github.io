@@ -3,7 +3,7 @@
  *
  * Name: wast
  * Author: wastedziyun
- * Version: v0.0.4
+ * Version: v0.0.5b
  */
 
 body {
@@ -57,4 +57,11 @@ li {
     font-family: "Times New Roman", "PingFang SC", sans-serif;
     color: white;
     font-size: 20px;
+}
+
+@font-face {
+  font-family: "PingFang SC";
+  src: url("/extensions/fonts/PingFang SC/PingFang SC Regular.woff") format("woff"),
+       url("/extensions/fonts/PingFang SC/PingFang SC Regular.eot") format("eot"),
+       url("/extensions/fonts/PingFang SC/PingFang SC Regular.ttf") format("ttf");
 }
