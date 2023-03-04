@@ -8,8 +8,8 @@
 
 body {
     padding-top: 50px;
-    padding-right: 12%;
-    padding-left: 12%;
+    padding-right: 13%;
+    padding-left: 13%;
     padding-bottom: 0px;
     word-break: hyphenate;
     background-color: #53565c;
@@ -57,4 +57,10 @@ li {
     font-family: "Times New Roman", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     color: white;
     font-size: 20px;
+}
+
+blockquote {
+    font-family: "Times New Roman", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: white;
+    font-size: 17px;
 }
