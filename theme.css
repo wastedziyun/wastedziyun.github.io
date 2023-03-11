@@ -3,7 +3,7 @@
  *
  * Name: wast
  * Author: wastedziyun
- * Version: v0.0.5b
+ * Version: v0.0.7
  */
 
 body {
@@ -46,6 +46,24 @@ p2 {
     font-family: "Times New Roman", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     color: white;
     font-size: 17px;
+}
+
+p3 {
+    font-family: "Times New Roman", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: white;
+    font-size: 14px;
+}
+
+p4 {
+    font-family: "Times New Roman", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: white;
+    font-size: 11px;
+}
+
+p5 {
+    font-family: "Times New Roman", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: white;
+    font-size: 8px;
 }
 
 a:visited, a:link {
