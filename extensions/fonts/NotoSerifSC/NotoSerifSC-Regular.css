@@ -1,9 +1,4 @@
-@font-face
-{
-    font-family: 'NotoSerifSC';
-  src: url('NotoSerifSC-Regular.eot');
-      url('NotoSerifSC-Regular.eot?#') format('embedded-opentype'),
-      url('NotoSerifSC-Regular.woff') format('woff'),
-      url('NotoSerifSC-Regular.otf') format('opentype'),
-      url('NotoSerifSC-Regular.ttf') format('truetype');
+@font-face {
+    font-family: NotoSerifSC;
+    src: url("NotoSerifSC-Regular.otf") format("opentype");
 }
