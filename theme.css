@@ -82,3 +82,12 @@ blockquote {
     color: white;
     font-size: 17px;
 }
+
+.mask {
+    background-color: #252525;
+    color: #252525;
+    transition: color 0.5s;
+}
+.mask:hover {
+    color: #ffffff;
+}
