@@ -1,2 +1,2 @@
-# wastedziyun.github.io
-wastedziyun's blog.
+# ziyun.eu.org
+Now active as zyuque's blog.
