@@ -1,2 +1,2 @@
 # ziyun.eu.org
-Now active as zyuque's blog.
+The inactive status may last for a long time.
