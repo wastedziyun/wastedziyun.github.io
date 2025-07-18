@@ -2,7 +2,7 @@
  * Theme Information:*
  * Name:wast
  * Author:zyuq
- * Version:v0.1.2
+ * Version:v0.2.2b
  */
 
 body {
@@ -14,19 +14,19 @@ body {
 	background-color:#53565c;
 }
 h1 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	font-size:1.875rem;
 	color:white;
 	text-align:center;
 }
 h2 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	font-size:1.5625rem;
 	color:white;
 	text-align:center;
 }
 h3 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	font-size:1.25rem;
 	color:white;
 	text-align:center;
@@ -37,22 +37,22 @@ p {
 	font-size:1.25rem;
 }
 p2 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	color:white;
 	font-size:1.0625rem;
 }
 p3 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	color:white;
 	font-size:0.875rem;
 }
 p4 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	color:white;
 	font-size:0.6875rem;
 }
 p5 {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	color:white;
 	font-size:0.5rem;
 }
@@ -61,12 +61,12 @@ a:visited,a:link {
 	font-weight:bold;
 }
 li {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	color:white;
 	font-size:1.25rem;
 }
 blockquote {
-	font-family:"Times New Roman","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+	font-family:"Times New Roman","Noto Sans SC",sans-serif;
 	color:white;
 	font-size:1.0625rem;
 }
