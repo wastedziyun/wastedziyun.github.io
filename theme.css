@@ -43,25 +43,27 @@ h1 {
 	font-size:2.75rem;
 	color:#EEEEEE;
 	text-align:center;
+	font-weight: 600;
 }
 h1l {
 	font-family:"Times New Roman", "Noto Serif SC", sans-serif;
 	font-size:2.75rem;
 	color:#EEEEEE;
-	font-weight: 700;
+	font-weight: 600;
 }
 h2 {
 	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
 	font-size:2rem;
 	color:#EEEEEE;
 	text-align:center;
+	font-weight: 600;
 }
 h2l {
 	font-family:"Times New Roman", "Noto Serif SC", sans-serif;
 	font-size:2rem;
 	color:#EEEEEE;
 	text-align:center;
-	font-weight: 700;
+	font-weight: 600;
 }
 h3 {
 	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
@@ -83,7 +85,7 @@ p2 {
 a:visited,a:link {
 	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
 	color:#EEEEEE;
-	font-weight:bold;
+font-weight: 600;
 	text-decoration: underline;
 	font-size:1.2rem;
 	line-height: 1.85rem
