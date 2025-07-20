@@ -1,9 +1,34 @@
 /*
  * Theme Information:*
- * Name:wast
- * Author:zyuq
- * Version:v0.3.3
+ * Name: wast
+ * Author: zyuq
+ * Version: v0.4.3
+ * Special thank to: xrdrsp
  */
+
+ @font-face {
+    font-family: 'Noto Sans SC';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSansSC-VariableFont_wght.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif SC';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSerifSC-VariableFont_wght.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans JP';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSansJP-VariableFont_wght.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Serif JP';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSerifJP-VariableFont_wght.ttf) format('opentype');
+}
 
 body {
 	padding-top:3.125rem;
