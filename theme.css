@@ -11,23 +11,35 @@
     font-display: swap;
     src: url(extensions/fonts/NotoSC/NotoSansSC-VariableFont_wght.ttf) format('opentype');
 }
-
 @font-face {
     font-family: 'Noto Serif SC';
     font-display: swap;
     src: url(extensions/fonts/NotoSC/NotoSerifSC-VariableFont_wght.ttf) format('opentype');
 }
-
 @font-face {
     font-family: 'Noto Sans JP';
     font-display: swap;
     src: url(extensions/fonts/NotoSC/NotoSansJP-VariableFont_wght.ttf) format('opentype');
 }
-
 @font-face {
     font-family: 'Noto Serif JP';
     font-display: swap;
     src: url(extensions/fonts/NotoSC/NotoSerifJP-VariableFont_wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSans-VariableFont_wdth,wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Serif';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSerif-VariableFont_wdth,wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'OpenSans';
+    font-display: swap;
+    src: url(extensions/fonts/OpenSans-VariableFont_wdth,wght.ttf) format('opentype');
 }
 
 body {
@@ -38,74 +50,80 @@ body {
 	word-break:hyphenate;
 	background-color:#333333;
 }
+
 h1 {
-	font-family:"Times New Roman", "Noto Serif SC", sans-serif;
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	font-size:2.75rem;
 	color:#EEEEEE;
 	text-align:center;
 	font-weight: 600;
 }
 h1l {
-	font-family:"Times New Roman", "Noto Serif SC", sans-serif;
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	font-size:2.75rem;
 	color:#EEEEEE;
 	font-weight: 600;
 }
 h2 {
-	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
+	font-family: "Noto Sans", "Noto Sans SC", sans-serif;
 	font-size:2rem;
 	color:#EEEEEE;
 	text-align:center;
 	font-weight: 600;
 }
 h2l {
-	font-family:"Times New Roman", "Noto Serif SC", sans-serif;
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	font-size:2rem;
 	color:#EEEEEE;
 	text-align:center;
 	font-weight: 600;
 }
 h3 {
-	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
+	font-family: "Noto Sans", "Noto Sans SC", sans-serif;
 	font-size:1.25rem;
 	color:#EEEEEE;
 	text-align:center;
 }
+
 p {
-	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
+	font-family: "OpenSans", "Noto Sans SC", sans-serif;
 	color:#EEEEEE;
 	font-size:1.2rem;
 	line-height: 1.85rem
 }
 p2 {
-	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
+	font-family: "OpenSans", "Noto Sans SC", sans-serif;
 	color:#EEEEEE;
 	font-size:1.0625rem;
 }
 a:visited,a:link {
-	font-family:"Times New Roman", "Noto Sans SC", sans-serif;
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	color:#EEEEEE;
 font-weight: 600;
 	text-decoration: underline;
 	font-size:1.2rem;
 	line-height: 1.85rem
 }
+
 a:hover {
 text-decoration: underline;
 }
 a:active {
 text-decoration: underline;
 }
+
 li {
-	font-family:"Times New Roman"
+	font-family:"Noto Serif SC"
 	color:#EEEEEE;
 	font-size:1.25rem;
 }
+
 blockquote {
-	font-family:"Times New Roman",;
+	font-family:"Noto Serif SC",;
 	color:#EEEEEE;
 	font-size:1.0625rem;
 }
+
 .mask {
 	background-color:#252525;
 	color:#252525;
@@ -114,7 +132,23 @@ blockquote {
 .mask:hover {
 	color:#EEEEEE;
 }
+
 code {
     font-family: "Courier New", "Noto Sans SC";
     color: #CCCCCC;
+}
+
+table, th, td {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+    border-collapse: collapse;
+	margin: 0 auto;
+    color: #EEEEEE;
+}
+th {
+	margin: 0 auto;
+    font-size: 18px;
+}
+td {
+	margin: 0 auto;
+    font-size: 18px;
 }
