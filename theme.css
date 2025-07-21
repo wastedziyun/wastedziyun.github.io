@@ -79,10 +79,17 @@ h2l {
 	font-weight: 600;
 }
 h3 {
-	font-family: "Noto Sans", "Noto Sans SC", sans-serif;
+	font-family: "Noto Serif", "Noto Sans SC", sans-serif;
 	font-size:1.25rem;
 	color:#EEEEEE;
 	text-align:center;
+}
+h3l {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+	font-size:1.25rem;
+	color:#EEEEEE;
+	text-align:center;
+	font-weight: 600;
 }
 
 p {
