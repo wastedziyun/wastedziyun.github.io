@@ -96,6 +96,11 @@ p2 {
 	color:#EEEEEE;
 	font-size:1.0625rem;
 }
+p3 {
+	font-family: "OpenSans", "Noto Sans SC", sans-serif;
+	color:#EEEEEE;
+	font-size:0.8625rem;
+}
 a:visited,a:link {
 	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	color:#EEEEEE;
