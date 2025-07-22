@@ -6,7 +6,6 @@
         <title>山西纪行</title>
         <link rel="stylesheet" href="/theme.css">
         <link rel="stylesheet" href="/extensions/extras/APlayer.min.css">
-        <link rel="stylesheet" href="/extensions/fonts/PingFang SC/PingFang SC Regular.css">
     </head>
         <header style="text-align: center">
             <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
@@ -22,7 +21,23 @@
         <p>
         待更新......<br>
         <code>K892</code>
-        
+        <center>
+            <div id="aplayer" style="width:26rem;nowrap;display:inline-block;position:relative;">
+            <script src="/extensions/extras/APlayer.min.js"></script>
+            <script>
+            const ap = new APlayer({
+                container: document.getElementById('aplayer'),
+                audio: [{
+                    name: '冀西南林路行',
+                    theme: '#EEEEEE',
+                    artist: '万能青年旅店',
+                    url: '/archives/uploads/2025/shanxi/4422.mp3',
+                    cover: '/archives/uploads/2025/shanxi/4422.webp',
+                }]
+            });
+            </script>
+            </div>
+        </center><br>
         <div style="text-align: center">
             <img src="./uploads\2025\shanxi\DSC03889.JPG" alt="" width=75% height=75%><br>
             <p3>07-13 06:04</p3>
