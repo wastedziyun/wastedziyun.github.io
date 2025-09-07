@@ -2,7 +2,7 @@
  * Theme Information:*
  * Name: wast
  * Author: zyuq
- * Version: v0.4.3
+ * Version: v0.4.4
  * Special thank to: xrdrsp
  */
 
@@ -44,8 +44,8 @@
 
 body {
 	padding-top:3.125rem;
-	padding-right:20%;
-	padding-left:20%;
+	padding-right:24%;
+	padding-left:24%;
 	padding-bottom:0rem;
 	word-break:hyphenate;
 	background-color:#333333;
@@ -176,4 +176,30 @@ td {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.image-container {
+  display: flex;          /* 启用flex布局 */
+  justify-content: space-between; /* 图片之间平均分布空间 */
+  align-items: center;    /* 垂直居中 */
+  gap: 5rem;              /* 图片之间的间距 */
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 50%;         /* 每张图片最大宽度为容器的一半 */
+  height: auto;           /* 保持图片原始比例 */
+}
+
+.flex-container {
+  display: flex; /* 启用flex布局 */
+  justify-content: space-between;
+  align-items: center;  
+}
+.box {
+  flex: auto; /* 等分宽度 */
+  margin-right: 0rem; /* 间距 */
+}
+.box:last-child {
+  margin-right: 7rem;
 }
