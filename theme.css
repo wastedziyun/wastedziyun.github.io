@@ -48,7 +48,7 @@ body {
 	padding-left:24%;
 	padding-bottom:0rem;
 	word-break:hyphenate;
-	background-color:#333333;
+	background-color:#323232;
 }
 
 h1 {
@@ -137,8 +137,8 @@ blockquote {
 }
 
 .mask {
-	background-color:#252525;
-	color:#252525;
+	background-color:#323232;
+	color:#323232;
 	transition:color 0.5s;
 }
 .mask:hover {
@@ -170,7 +170,7 @@ td {
     padding: 0.05rem; /* 内边距 */
     border: 1px solid #dddddd;
     border-radius: 0rem; /* 圆角 */
-    background-color: #333333;
+    background-color: #323232;
 }
 .center {
   display: flex;
