@@ -137,8 +137,8 @@ blockquote {
 }
 
 .mask {
-	background-color:#323232;
-	color:#323232;
+	background-color:#252525;
+	color:#252525;
 	transition:color 0.5s;
 }
 .mask:hover {
