@@ -41,6 +41,11 @@
     font-display: swap;
     src: url(extensions/fonts/OpenSans-VariableFont_wdth,wght.ttf) format('opentype');
 }
+@font-face {
+    font-family: 'SinaNova';
+    font-display: swap;
+    src: url(extensions/fonts/SinaNovaW01-Regular.ttf) format('opentype');
+}
 
 body {
 	padding-top:3.125rem;
