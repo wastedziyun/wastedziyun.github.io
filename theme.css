@@ -47,6 +47,8 @@
     src: url(extensions/fonts/SinaNovaW01-Regular.ttf) format('opentype');
 }
 
+
+
 body {
 	padding-top:3.125rem;
 	padding-right:24%;
@@ -54,6 +56,13 @@ body {
 	padding-bottom:0rem;
 	word-break:hyphenate;
 	background-color:#323232;
+}
+
+span.full-width-quote {
+	font-family: "Noto Sans SC", sans-serif;
+}
+span.serif {
+	font-family: "Noto Serif SC", serif;
 }
 
 h1 {
@@ -100,8 +109,11 @@ h3l {
 p {
 	font-family: "OpenSans", "Noto Sans SC", sans-serif;
 	color:#EEEEEE;
-	font-size:1.2rem;
+	font-size:1.25rem;
 	line-height: 1.85rem
+}
+p.full-width-quote {
+	font-family: "Noto Sans SC", sans-serif;
 }
 p2 {
 	font-family: "OpenSans", "Noto Sans SC", sans-serif;
@@ -139,6 +151,7 @@ blockquote {
 	font-family:"Noto Serif SC",;
 	color:#CCCCCC;
 	font-size:1.0625rem;
+	line-height: 1.75rem
 }
 
 .mask {
