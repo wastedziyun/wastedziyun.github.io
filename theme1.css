@@ -1,0 +1,223 @@
+/*
+ * Theme Information:*
+ * Name: wast1
+ * Author: zyuq
+ * Version: 0.5
+ * Special thank to: xrdrsp
+ */
+
+ @font-face {
+    font-family: 'Noto Sans SC';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSansSC-VariableFont_wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Serif SC';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSerifSC-VariableFont_wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Sans JP';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSansJP-VariableFont_wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Serif JP';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSerifJP-VariableFont_wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Sans';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSans-VariableFont_wdth,wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'Noto Serif';
+    font-display: swap;
+    src: url(extensions/fonts/NotoSC/NotoSerif-VariableFont_wdth,wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'OpenSans';
+    font-display: swap;
+    src: url(extensions/fonts/OpenSans-VariableFont_wdth,wght.ttf) format('opentype');
+}
+@font-face {
+    font-family: 'SinaNova';
+    font-display: swap;
+    src: url(extensions/fonts/SinaNovaW01-Regular.ttf) format('opentype');
+}
+
+
+
+body {
+	padding-top:3.125rem;
+	padding-right:24%;
+	padding-left:24%;
+	padding-bottom:0rem;
+	word-break:hyphenate;
+	background-color:#FFFFFF;
+}
+
+span.full-width-quote {
+	font-family: "Noto Sans SC", sans-serif;
+}
+span.serif {
+	font-family: "Noto Serif SC", serif;
+}
+
+h1 {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+	font-size:2.75rem;
+	color:#000000;
+	text-align:center;
+	font-weight: 600;
+}
+h1l {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+	font-size:2.75rem;
+	color:#000000;
+	font-weight: 600;
+}
+h2 {
+	font-family: "Noto Sans", "Noto Sans SC", sans-serif;
+	font-size:2rem;
+	color:#000000;
+	text-align:center;
+	font-weight: 600;
+}
+h2l {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+	font-size:2rem;
+	color:#000000;
+	text-align:center;
+	font-weight: 600;
+}
+h3 {
+	font-family: "Noto Serif", "Noto Sans SC", sans-serif;
+	font-size:1.25rem;
+	color:#000000;
+	text-align:center;
+}
+h3l {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+	font-size:1.25rem;
+	color:#000000;
+	text-align:center;
+	font-weight: 600;
+}
+
+p {
+	font-family: "OpenSans", "Noto Sans SC", sans-serif;
+	color:#000000;
+	font-size:1.25rem;
+	line-height: 1.85rem
+}
+p.full-width-quote {
+	font-family: "Noto Sans SC", sans-serif;
+}
+p2 {
+	font-family: "OpenSans", "Noto Sans SC", sans-serif;
+	color:#000000;
+	font-size:1.0625rem;
+}
+p3 {
+	font-family: "OpenSans", "Noto Sans SC", sans-serif;
+	color:#000000;
+	font-size:0.8625rem;
+}
+a:visited,a:link {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+	color:#000000;
+font-weight: 600;
+	text-decoration: underline;
+	font-size:1.2rem;
+	line-height: 1.85rem
+}
+
+a:hover {
+text-decoration: underline;
+}
+a:active {
+text-decoration: underline;
+}
+
+li {
+	font-family:"Noto Serif SC"
+	color:#000000;
+	font-size:1.25rem;
+}
+
+blockquote {
+	font-family:"Noto Serif SC",;
+	color:#222222;
+	font-size:1.0625rem;
+	line-height: 1.75rem
+}
+
+.mask {
+	background-color:#252525;
+	color:#252525;
+	transition:color 0.5s;
+}
+.mask:hover {
+	color:#000000;
+}
+
+code {
+    font-family: "Courier New", "Noto Sans SC";
+    color: #222222;
+}
+
+table, th, td {
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
+    border-collapse: collapse;
+	margin: 0 auto;
+    color: #000000;
+}
+th {
+	margin: 0 auto;
+    font-size: 1.2rem;
+}
+td {
+	margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+.text-box {
+	display: inline-block;
+    padding: 0.05rem; /* 内边距 */
+    border: 1px solid #dddddd;
+    border-radius: 0rem; /* 圆角 */
+    background-color: #FFFFFF;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;          /* 启用flex布局 */
+  justify-content: space-between; /* 图片之间平均分布空间 */
+  align-items: center;    /* 垂直居中 */
+  gap: 5rem;              /* 图片之间的间距 */
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 50%;         /* 每张图片最大宽度为容器的一半 */
+  height: auto;           /* 保持图片原始比例 */
+}
+
+.flex-container {
+  display: flex; /* 启用flex布局 */
+  justify-content: space-between;
+  align-items: center;  
+}
+.box {
+  flex: auto; /* 等分宽度 */
+  margin-right: 0rem; /* 间距 */
+}
+.box:last-child {
+  margin-right: 7rem;
+}
