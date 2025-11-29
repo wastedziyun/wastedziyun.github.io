@@ -128,9 +128,10 @@ p3 {
 a:visited,a:link {
 	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	color:#EEEEEE;
-font-weight: 600;
+	font-weight: 600;
 	text-decoration: underline;
-	font-size:1.2rem;
+	text-decoration-color: #AAAAAA;
+	font-size:1.2rem;	
 	line-height: 1.85rem
 }
 
