@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entelechia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Dancing+Script:wght@700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #C02138;
+            --text-black: #1A1A1A;
+            --bg-color: #f4efef;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background-color: var(--bg-color);
+            overflow: hidden;
+            font-family: 'Noto Serif SC', serif;
+            background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 10px, rgba(0,0,0,0.03) 10px, rgba(0,0,0,0.03) 11px);
+        }
+
+        #contourCanvas {
+            position: absolute;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+            mix-blend-mode: multiply;
+        }
+
+        #scene {
+            position: relative;
+            width: 100vw; height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 2500px;
+            transform-style: preserve-3d;
+        }
+
+        .layer {
+            position: absolute;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transform-origin: center center;
+            transition: box-shadow 0.8s ease;
+        }
+
+        .clickable {
+            cursor: pointer;
+            transition: filter 0.3s ease;
+        }
+        
+        /* 元素边框 */
+        .clickable::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border: 1px solid var(--primary-red);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            border-radius: 2px;
+        }
+
+        .clickable:hover::before {
+            opacity: 1; transform: scale(1);
+            box-shadow: 0 0 15px rgba(168, 26, 47, 0.2);
+        }
+
+        /* 毛玻璃聚焦背景 */
+        .is-focusing {
+            backdrop-filter: blur(25px) saturate(180%) !important;
+            background: rgba(255, 255, 255, 0.4) !important;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        /* 新增：标题组聚焦时移除毛玻璃和padding，避免影响Arknights字样 */
+        .is-focusing.title-group {
+            backdrop-filter: none !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 近卫元素聚焦时恢复原本样式 */
+        .is-focusing.bottom-left {
+            backdrop-filter: none !important;
+            background: linear-gradient(135deg, var(--primary-red), #e0314a) !important;
+            border-radius: 0 !important;
+            padding: 8px 30px 8px 15px !important;
+        }
+
+        /* 聚焦状态下的增强效果 */
+        .is-focusing::before {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            border-width: 2px;
+            box-shadow: 0 0 30px var(--primary-red), inset 0 0 15px var(--primary-red);
+            animation: border-glow 2s infinite alternate;
+        }
+        
+        @keyframes border-glow {
+            from { opacity: 0.7; box-shadow: 0 0 20px var(--primary-red); }
+            to { opacity: 1; box-shadow: 0 0 40px var(--primary-red), 0 0 10px white; }
+        }
+
+        /* 聚焦遮罩 */
+        .focus-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: transparent;
+            opacity: 0; 
+            pointer-events: none;
+            z-index: 80;
+        }
+        .focus-overlay.active { 
+            opacity: 1; 
+            pointer-events: auto; 
+        }
+
+        /* 严格位置布局 */
+        .glass-frame {
+            width: 85vw; max-width: 1400px; height: 75vh;
+            border-radius: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.9), 0 30px 60px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+        }
+
+        .bg-watermark {
+            width: 85vw; max-width: 1400px;
+            display: flex; justify-content: space-between;
+            font-size: 280px; font-weight: 900;
+            color: rgba(168, 26, 47, 0.04);
+            pointer-events: none; padding: 0 20px; box-sizing: border-box;
+            letter-spacing: 20px; z-index: 2; white-space: nowrap;
+        }
+
+        .title-group {
+            top: 10%; text-align: center; z-index: 3;
+            left: 50%; transform: translateX(-50%); 
+        }
+        .title-main {
+            font-family: 'Cinzel', serif; font-size: 130px; font-weight: 900;
+            color: var(--primary-red); letter-spacing: 15px; margin: 0; line-height: 1;
+        }
+        .title-script {
+            font-family: 'Dancing Script', cursive; font-size: 100px;
+            color: var(--text-black); position: absolute; top: 10%; left: 50%;
+            transform: translateX(-50%); opacity: 0.85; white-space: nowrap;
+        }
+
+        .info-left {
+            left: 10%; top: 30%; z-index: 4;
+            color: var(--primary-red);
+        }
+        .red-line { width: 80px; height: 3px; background-color: var(--primary-red); margin-bottom: 15px; }
+        .poetry { font-size: 14px; line-height: 1.8; margin-bottom: 30px; font-weight: bold; }
+        .rhodes-text { font-size: 16px; font-weight: 900; color: var(--text-black); margin-bottom: 20px; font-family: 'Cinzel', serif;}
+        .cv-box {
+            border: 1px solid rgba(168, 26, 47, 0.3); padding: 10px 20px;
+            background: rgba(255,255,255,0.85); display: flex; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); backdrop-filter: blur(5px);
+        }
+        .cv-name-cn { font-size: 24px; font-weight: 900; color: #000; letter-spacing: 5px; margin-right: 15px; }
+        .cv-detail { font-size: 12px; color: var(--primary-red); font-weight: bold; }
+
+        .info-right {
+            right: 10%; top: 35%; text-align: right; z-index: 4;
+        }
+        .design-by { font-size: 16px; font-weight: 900; color: var(--primary-red); margin-bottom: 25px; letter-spacing: 2px; }
+        .numbers { font-size: 32px; font-weight: 900; line-height: 1.1; color: var(--text-black); margin-bottom: 20px; font-family: 'Cinzel', serif; }
+        .arrows { letter-spacing: 3px; color: var(--primary-red); opacity: 0.6; }
+
+        .bottom-left {
+            bottom: 12%; left: 10%; display: flex; align-items: center;
+            background: linear-gradient(135deg, var(--primary-red), #e0314a);
+            padding: 8px 30px 8px 15px; border-left: 6px solid #6b0c1b;
+            box-shadow: 0 10px 20px rgba(168, 26, 47, 0.3); z-index: 6;
+        }
+        .class-icon { width: 35px; height: 35px; margin-right: 15px; filter: invert(1); }
+        .class-text { color: #fff; font-size: 22px; font-weight: 900; letter-spacing: 4px; }
+
+        .bottom-right {
+            bottom: 12%; right: 10%; text-align: right; z-index: 6;
+        }
+        .br-title { color: var(--primary-red); font-size: 14px; letter-spacing: 3px; font-weight: bold; }
+        .br-game { font-size: 32px; font-weight: 900; color: var(--text-black); letter-spacing: 2px; font-family: 'Cinzel', serif; }
+        .br-line { height: 4px; width: 100%; background: var(--text-black); margin-top: 5px; }
+
+        .character {
+            bottom: -5%; height: 105%; z-index: 5; pointer-events: none;
+            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.3));
+        }
+        .character img { height: 100%; width: auto; object-fit: contain; }
+
+        .interactive-halo {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            background: radial-gradient(circle 300px at var(--mx) var(--my), rgba(255, 60, 90, 0.3), transparent 70%);
+            mix-blend-mode: overlay; z-index: 300;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="contourCanvas"></canvas>
+
+    <div id="scene">
+        <div class="layer glass-frame" data-depth="0.01" data-z="-60"></div>
+        <div class="layer bg-watermark" data-depth="0.02" data-z="-40">
+            <span>隐德</span><span>来希</span>
+        </div>
+
+        <div class="layer info-left clickable" data-depth="0.03" data-z="10">
+            <div class="red-line"></div>
+            <div class="poetry">玫瑰河畔的航船隐德来希<br>愿在血河上为你引渡</div>
+            <div class="rhodes-text">RHODES<br>ISLAND</div>
+            <div class="cv-box">
+                <div class="cv-name-cn">隐德来希</div>
+                <div class="cv-detail">配音CV<br>长谷川育美</div>
+            </div>
+        </div>
+
+        <div class="layer info-right clickable" data-depth="0.03" data-z="10">
+            <div class="design-by">◇ ◇ ◇ ◇<br>DESIGN BY ASK</div>
+            <div class="numbers">#214<br>#168</div>
+            <div class="arrows">≪≪≪≪≪</div>
+        </div>
+
+        <div class="layer title-group clickable" data-depth="0.04" data-z="30">
+            <h1 class="title-main">ENTELECHIA</h1>
+            <h2 class="title-script">Arknights</h2>
+        </div>
+
+        <div class="layer bottom-left clickable" data-depth="0.05" data-z="50">
+            <img src="./extensions/jw.png" class="class-icon" alt="近卫">
+            <span class="class-text">近卫</span>
+        </div>
+
+        <div class="layer bottom-right clickable" data-depth="0.05" data-z="50">
+            <div class="br-title">ENTELECHIA</div>
+            <div class="br-game">ARKNIGHTS</div>
+            <div class="br-line"></div>
+        </div>
+
+        <div class="layer character" data-depth="0.08" data-z="100">
+            <img src="https://media.prts.wiki/6/61/%E7%AB%8B%E7%BB%98_%E9%9A%90%E5%BE%B7%E6%9D%A5%E5%B8%8C_2.png" alt="Entelechia">
+        </div>
+    </div>
+
+    <div class="focus-overlay" id="focusOverlay"></div>
+    <div class="interactive-halo" id="halo"></div>
+
+    <script>
+        const scene = document.getElementById('scene');
+        const layers = document.querySelectorAll('.layer');
+        const halo = document.getElementById('halo');
+        const focusOverlay = document.getElementById('focusOverlay');
+        const characterLayer = document.querySelector('.character');
+        const titleScript = document.querySelector('.title-script');
+        const canvas = document.getElementById('contourCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let isFocused = false;
+        let isReturning = false;
+        let targetX = 0, targetY = 0;
+        let currentX = 0, currentY = 0;
+        let time = 0;
+        let focusedEl = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function drawContours() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            time += 0.01;
+            ctx.lineWidth = 1.5;
+            for (let k = 0; k < 6; k++) {
+                ctx.beginPath();
+                let yBase = canvas.height * (0.2 + k * 0.12);
+                for (let x = 0; x < canvas.width; x += 20) {
+                    let y = yBase + Math.sin(x * 0.005 + time + k) * 25;
+                    if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.strokeStyle = `rgba(192, 33, 56, ${0.06 + k * 0.02})`;
+                ctx.stroke();
+            }
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            targetX = (e.clientX / window.innerWidth) - 0.5;
+            targetY = (e.clientY / window.innerHeight) - 0.5;
+            halo.style.setProperty('--mx', `${e.clientX}px`);
+            halo.style.setProperty('--my', `${e.clientY}px`);
+        });
+
+        function animate() {
+            drawContours();
+            if (!isFocused && !isReturning) {
+                currentX += (targetX - currentX) * 0.1;
+                currentY += (targetY - currentY) * 0.1;
+
+                layers.forEach(layer => {
+                    const depth = parseFloat(layer.getAttribute('data-depth'));
+                    const z = parseFloat(layer.getAttribute('data-z'));
+                    const moveX = currentX * depth * -1000;
+                    const moveY = currentY * depth * -1000;
+                    const rotateX = (currentY * z * -0.1); 
+                    const rotateY = (currentX * z * 0.1);
+                    const isTitle = layer.classList.contains('title-group');
+                    const baseTranslate = isTitle ? 'translateX(-50%)' : '';
+
+                    layer.style.transform = `${baseTranslate} translate3d(${moveX}px, ${moveY}px, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // 聚焦逻辑
+        document.querySelectorAll('.clickable').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (isFocused || isReturning) return;
+
+                isFocused = true;
+                focusedEl = el;
+                focusOverlay.classList.add('active');
+
+                el.classList.add('is-focusing');
+                el.style.zIndex = "1000";
+                
+                const rect = el.getBoundingClientRect();
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                const offX = centerX - (rect.left + rect.width / 2);
+                const offY = centerY - (rect.top + rect.height / 2);
+
+                const isTitle = el.classList.contains('title-group');
+                const baseTranslate = isTitle ? 'translateX(-50%)' : '';
+
+                el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                el.style.transform = `${baseTranslate} translate3d(${offX}px, ${offY}px, 600px) scale(1.3)`;
+                el.style.boxShadow = "0 50px 100px rgba(0,0,0,0.2), 0 0 40px rgba(192, 33, 56, 0.4)";
+
+                // ================= 核心修改：判断是否为标题组，决定是否隐藏Arknights =================
+                characterLayer.style.transition = 'all 0.8s ease';
+                characterLayer.style.transform = `translate3d(30%, 0, 0) scale(0.95)`;
+                
+                titleScript.style.transition = 'opacity 0.8s ease';
+                if (!isTitle) {
+                    titleScript.style.opacity = '0'; // 非标题组聚焦时隐藏
+                } else {
+                    titleScript.style.opacity = '0.85'; // 标题组聚焦时保持可见
+                }
+            });
+        });
+
+        focusOverlay.addEventListener('click', () => {
+            if (!isFocused || !focusedEl) return;
+
+            isFocused = false;
+            isReturning = true;
+            focusOverlay.classList.remove('active');
+            focusedEl.classList.remove('is-focusing');
+
+            // 恢复Arknights字样
+            titleScript.style.opacity = '0.85';
+
+            layers.forEach(el => {
+                el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                
+                const depth = parseFloat(el.getAttribute('data-depth'));
+                const z = parseFloat(el.getAttribute('data-z'));
+                const moveX = currentX * depth * -1000;
+                const moveY = currentY * depth * -1000;
+                const rotateX = (currentY * z * -0.1); 
+                const rotateY = (currentX * z * 0.1);
+                const isTitle = el.classList.contains('title-group');
+                const baseTranslate = isTitle ? 'translateX(-50%)' : '';
+
+                el.style.boxShadow = '';
+                el.style.transform = `${baseTranslate} translate3d(${moveX}px, ${moveY}px, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            characterLayer.style.transform = `translate3d(0, 0, 100px) scale(1)`;
+
+            setTimeout(() => {
+                isReturning = false;
+                layers.forEach(el => {
+                    el.style.transition = '';
+                    const zAttr = el.getAttribute('data-z');
+                    el.style.zIndex = zAttr > 80 ? '5' : zAttr > 40 ? '6' : '4';
+                });
+                focusedEl = null;
+            }, 800);
+        });
+    </script>
+</body>
+</html>
