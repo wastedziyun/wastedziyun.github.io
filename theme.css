@@ -2,7 +2,7 @@
  * Theme Information:*
  * Name: wast
  * Author: zyuq
- * Version: 0.5
+ * Version: 0.51
  * Special thank to: xrdrsp
  */
 
@@ -79,7 +79,7 @@ h1l {
 	font-weight: 600;
 }
 h2 {
-	font-family: "Noto Sans", "Noto Sans SC", sans-serif;
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	font-size:2rem;
 	color:#EEEEEE;
 	text-align:center;
@@ -93,7 +93,7 @@ h2l {
 	font-weight: 600;
 }
 h3 {
-	font-family: "Noto Serif", "Noto Sans SC", sans-serif;
+	font-family: "Noto Serif", "Noto Serif SC", sans-serif;
 	font-size:1.25rem;
 	color:#EEEEEE;
 	text-align:center;
